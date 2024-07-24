@@ -1,0 +1,132 @@
+﻿<style>
+    body {
+        margin: 1%;
+        font-family: 'Segoe UI';
+        font-size: 11pt;
+    }
+
+    .form-container {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 15px;
+    }
+    .form-container label {
+        margin-bottom: 5px;
+     }
+     .form-container input, .form-container textarea, .form-container select {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+     }
+    .form-container button {
+        grid-column: span 2;
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    
+    .form-grid button:hover {
+        background-color: #0056b3;
+    }
+
+</style>
+<div class="form-container">
+   
+     <form method="POST" action="SaveCustomer" class="form-grid" >
+            <label for="user_type">User Type:</label>
+            <select id="user_type" name="user_type" onchange="toggleFields()">
+                <option value="customer">Customer</option>
+                <option value="employee">Employee</option>
+            </select>
+            
+            
+            <div id="customer_fields">
+                <label for="cust_id">Customer ID:</label>
+                <input type="text" id="cust_id" name="cust_id">
+
+                <label for="cust_email">Email:</label>
+                <input type="email" id="cust_email" name="cust_email" placeholder="Enter your email">
+
+                <label for="cust_name">Name:</label>
+                <input type="text" id="cust_name" name="cust_name">
+
+                <label for="cust_phone">Phone:</label>
+                <input type="text" id="cust_phone" name="cust_phone">
+
+                <label for="cust_shipping_addr">Shipping Address:</label>
+                <textarea id="cust_shipping_addr" name="cust_shipping_addr"></textarea>
+
+                <label for="cust_billing_addr">Billing Address:</label>
+                <textarea id="cust_billing_addr" name="cust_billing_addr"></textarea>
+
+                <label for="preferred_store_id">Preferred Store ID:</label>
+                <input type="text" id="preferred_store_id" name="preferred_store_id">
+
+                <label for="cust_username">Username:</label>
+                <input type="text" id="cust_username" name="cust_username">
+            </div>
+
+            
+          <div id="employee_fields" style="display:none;">
+                <label for="emp_id">Employee ID:</label>
+                <input type="text" id="emp_id" name="emp_id">
+
+                <label for="emp_name">Name:</label>
+                <input type="text" id="emp_name" name="emp_name">
+
+                <label for="emp_email">Email:</label>
+                <input type="email" id="emp_email" name="emp_email" placeholder="Enter your email">
+
+                <label for="emp_phone">Phone:</label>
+                <input type="text" id="emp_phone" name="emp_phone">
+
+                <label for="emp_addr">Address:</label>
+                <textarea id="emp_addr" name="emp_addr"></textarea>
+
+                <label for="emp_store_id">Store ID:</label>
+                <input type="text" id="emp_store_id" name="emp_store_id">
+            </div>
+        <button type="submit">Add user</button>
+        </form>
+</div>
+
+<script>
+    function validateForm() {
+        const phone = document.getElementById('cust_phone').value;
+        const phonePattern = /^\d{10}$/;
+
+        if (!phonePattern.test(phone)) {
+            alert('Please enter a valid 10-digit phone number');
+            return false;
+        }
+
+        return true;
+    }
+
+    function toggleFields() {
+        const userType = document.getElementById('user_type').value;
+        const customerFields = document.getElementById('customer_fields');
+        const employeeFields = document.getElementById('employee_fields');
+        const userTypeField = document.getElementById('user_type_field');
+
+        if (userType === 'customer') {
+            customerFields.style.display = 'grid';
+            employeeFields.style.display = 'none';
+            userTypeField.value = 'Customer';
+        } else if (userType === 'employee') {
+            customerFields.style.display = 'none';
+            employeeFields.style.display = 'grid';
+            userTypeField.value = 'Employee';
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            toggleFields();
+        });
+    }
+
+</script>

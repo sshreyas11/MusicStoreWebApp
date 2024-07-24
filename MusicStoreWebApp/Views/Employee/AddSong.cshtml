@@ -1,0 +1,52 @@
+﻿@model MusicStoreWebApp.Models.SongViewModel
+
+@{
+    ViewData["Title"] = "Add New Song";
+}
+
+<h2>Add New Song</h2>
+
+<form asp-action="AddSong" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="song_name">Song Name</label>
+        <input asp-for="song_name" class="form-control" />
+        <span asp-validation-for="song_name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="song_genre">Genre</label>
+        <input asp-for="song_genre" class="form-control" />
+        <span asp-validation-for="song_genre" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="song_album">Album</label>
+        <input asp-for="song_album" class="form-control" />
+        <span asp-validation-for="song_album" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="song_artist">Artist</label>
+        <input asp-for="song_artist" class="form-control" />
+        <span asp-validation-for="song_artist" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="song_release_date">Release Date</label>
+        <input asp-for="song_release_date" class="form-control" />
+        <span asp-validation-for="song_release_date" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="price">Price</label>
+        <input asp-for="price" class="form-control" />
+        <span asp-validation-for="price" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="song_file">Song File</label>
+        <input asp-for="song_file" type="file" class="form-control" />
+        <span asp-validation-for="song_file" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

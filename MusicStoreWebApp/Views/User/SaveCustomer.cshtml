@@ -1,0 +1,63 @@
+﻿@model CustomerViewModel
+<!--
+
+<h4> Customer ID</h4><b>@Model.cust_id</b>
+<h4> Customer Email</h4><b>@Model.cust_email</b>
+<h4> Username</h4><b>@Model.cust_username</b>
+<h4> Customer Name</h4><b>@Model.cust_name</b>
+<h4> Customer Phone</h4><b>@Model.cust_phone</b>
+<h4> Shipping Address</h4><b>@Model.cust_shipping_addr</b>
+<h4> Preferred Store ID</h4><b>@Model.preferred_store_id</b>
+<h4> Billing Address</h4><b>@Model.cust_billing_addr</b>
+
+-->
+<style>
+    .text-center {
+        margin-top: 2rem;
+    }
+
+    .button-container {
+        margin-top: 2rem;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: 600;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: white;
+        border: none;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+        border: none;
+        margin-left: 10px;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+</style>
+
+<div class="text-center">
+    <h5 class="display-4">Customer @Model.cust_name added successfully </h5>
+    <div class="button-container">
+        <a asp-area="" asp-controller="Home" asp-action="Index" class="btn btn-primary">Home</a>
+        <a asp-area="" asp-controller="User" asp-action="add" class="btn btn-primary">Add Customer</a>
+        
+    </div>
+</div>

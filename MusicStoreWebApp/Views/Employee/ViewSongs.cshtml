@@ -1,0 +1,31 @@
+﻿@model List<MusicStoreWebApp.Models.SongViewModel>
+
+<h2>Songs List</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Song ID</th>
+            <th>Name</th>
+            <th>Genre</th>
+            <th>Album</th>
+            <th>Artist</th>
+            <th>Release Date</th>
+            <th>Price ($)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var song in Model)
+        {
+            <tr>
+                <td>@song.song_id</td>
+                <td>@song.song_name</td>
+                <td>@song.song_genre</td>
+                <td>@song.song_album</td>
+                <td>@song.song_artist</td>
+                <td>@song.song_release_date?.ToString("yyyy-MM-dd")</td>
+                <td>@song.price?.ToString("F2")</td>
+            </tr>
+        }
+    </tbody>
+</table>

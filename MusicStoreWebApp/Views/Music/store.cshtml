@@ -1,0 +1,97 @@
+﻿<style>
+
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+
+    h1 {
+        color: #333;
+    }
+
+    h2 {
+        color: #555;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    table, th, td {
+        border: 1px solid #ddd;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f4f4f4;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+</style>
+
+<h4>Music Store</h4>
+<h6>Albums</h6>
+
+<table>
+    <thead>
+        <tr>
+            <th>Album ID</th>
+            <th>Album Name</th>
+            <th>Price</th>
+            <th>Release Date</th>
+            <th>Artist</th>
+            <th>Genre</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var album in Model.Albums) {
+            <tr>
+                <td>@album.album_id</td>
+                <td>@album.album_name</td>
+                <td>@album.album_price.ToString("C")</td>
+                <td>@album.album_release_date.ToString("yyyy-MM-dd")</td>
+                <td>@album.album_artist</td>
+                <td>@album.album_genre</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h6>Songs</h6>
+<table>
+    <thead>
+        <tr>
+            <th>Song ID</th>
+            <th>Song Name</th>
+            <th>Genre</th>
+            <th>Album</th>
+            <th>Artist</th>
+            <th>Album ID</th>
+            <th>Release Date</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var song in Model.Songs) {
+            <tr>
+                <td>@song.song_id</td>
+                <td>@song.song_name</td>
+                <td>@song.song_genre</td>
+                <td>@song.song_album</td>
+                <td>@song.song_artist</td>
+                <td>@song.album_id</td>
+                <td>@song.song_release_date.ToString("yyyy-MM-dd")</td>
+                <td>@song.price.ToString("C")</td>
+            </tr>
+        }
+    </tbody>
+</table>

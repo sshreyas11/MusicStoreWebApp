@@ -1,0 +1,71 @@
+﻿<!-- Grid layout for rendering list of customers-->
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 10px;
+    }
+
+    .customer-container {
+        display: grid;
+        grid-template-columns: 100px 1fr 1fr 1fr 1fr 100px 1fr 1fr;
+        gap: 10px;
+        margin: 10px auto;
+    }
+
+    .customer-header, .customer-cell {
+        padding: 8px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+
+    .customer-header {
+        background-color: #f1f1f1;
+        font-weight: bold;
+    }
+
+    .customer-row {
+        display: contents;
+    }
+
+    .customer-row:nth-child(even) .customer-cell {
+            background-color: #f9f9f9;
+    }
+
+    .customer-cell:nth-child(1){
+        width:100px;
+    }
+
+    .customer-cell:nth-child(7), /* Shipping Address */
+    .customer-cell:nth-child(8) { /* Billing Address */
+        min-width: 200px;
+    }
+</style>
+
+@model IEnumerable<CustomerViewModel>
+
+<div class="customer-container">
+    <div class="customer-header" >ID</div>
+    <div class="customer-header">Email</div>
+    <div class="customer-header">Name</div>
+    <div class="customer-header">Phone</div>
+    <div class="customer-header">Username</div>
+    
+    <div class="customer-header">Preferred Store ID</div>
+    <div class="customer-header">Shipping Address</div>
+    <div class="customer-header">Billing Address</div>
+
+    @foreach (var customer in Model) {
+        <div class="customer-row">
+            <div class="customer-cell">@customer.cust_id</div>
+            <div class="customer-cell">@customer.cust_email</div>
+            <div class="customer-cell">@customer.cust_name</div>
+            <div class="customer-cell">@customer.cust_phone</div>
+            <div class="customer-cell">@customer.cust_username</div>
+            <div class="customer-cell">@customer.preferred_store_id</div>
+            
+            <div class="customer-cell">@customer.cust_shipping_addr</div>
+            <div class="customer-cell">@customer.cust_billing_addr</div>
+        </div>
+    }
+</div>
+

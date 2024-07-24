@@ -1,0 +1,23 @@
+﻿@model List<MusicStoreWebApp.Models.StoreViewModel>
+
+<h2>Stores List</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Store ID</th>
+            <th>Name</th>
+            <th>Location</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var store in Model)
+        {
+            <tr>
+                <td>@store.store_id</td>
+                <td>@store.store_name</td>
+                <td>@store.store_location</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,29 @@
+﻿@model List<MusicStoreWebApp.Models.CustomerViewModel>
+
+<h2>Customers List</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Customer ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Shipping Address</th>
+            <th>Billing Address</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>@customer.cust_id</td>
+                <td>@customer.cust_name</td>
+                <td>@customer.cust_email</td>
+                <td>@customer.cust_phone</td>
+                <td>@customer.cust_shipping_addr</td>
+                <td>@customer.cust_billing_addr</td>
+            </tr>
+        }
+    </tbody>
+</table>

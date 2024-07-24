@@ -1,0 +1,11 @@
+﻿@{
+    ViewData["Title"] = "Employee Dashboard";
+}
+<h2>Employee Dashboard</h2>
+
+<div>
+    <a href="@Url.Action("ViewSongs", "Employee")" class="btn btn-primary">View Songs</a>
+    <a href="@Url.Action("ViewCustomers", "Employee")" class="btn btn-secondary">View Customers</a>
+    <a href="@Url.Action("ViewStores", "Employee")" class="btn btn-primary">View Stores</a>
+    <a href="@Url.Action("AddSong", "Employee")" class="btn btn-secondary">Add New Song</a>
+</div>

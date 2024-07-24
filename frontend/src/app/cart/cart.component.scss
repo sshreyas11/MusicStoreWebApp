@@ -1,0 +1,50 @@
+.body {
+  font-family: "Arial", sans-serif;
+  background-color: #f9f9f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+.main-component {
+  text-align: center;
+  padding: 20px;
+}
+
+.main-component h2 {
+  margin: 0;
+  font-size: 2em;
+  color: #333;
+  font-family: "Arial", sans-serif;
+  text-align: center;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.cart-page {
+    padding: 20px;
+  }
+  
+  .cart-album {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    width: 250px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+  }
+  
+  .cart-album-cover {
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+  }
+  
+  .cart-album-details {
+    flex: 1;
+  }
+  

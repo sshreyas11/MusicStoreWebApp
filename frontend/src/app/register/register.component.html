@@ -1,0 +1,35 @@
+<div class="page-container">
+  <div class="register-text">Register</div>
+  <div class="register-container">
+    <form (ngSubmit)="onSubmit()">
+      <div>
+        <label for="user_type">User Type</label>
+        <select id="user_type" [(ngModel)]="user.user_type" name="user-type" required>
+          <option *ngFor="let type of user_types" [value]="type">{{ type }}</option>
+        </select>
+      </div>
+      <div>
+        <label for="first_name">First Name</label>
+        <input id="first_name" [(ngModel)]="user.first_name" name="first_name" type="text" required>
+      </div>
+      <div>
+        <label for="last_name">Last Name</label>
+        <input id="last_name" [(ngModel)]="user.last_name" name="last_name" type="text" required>
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input id="email" [(ngModel)]="user.email" name="email" type="email" required>
+      </div>
+      <div>
+        <label for="password">Password</label>
+        <input id="password" [(ngModel)]="user.password" name="password" type="password" required>
+      </div>
+      <div>
+        <label for="usr_pho">Phone</label>
+        <input id="usr_pho" [(ngModel)]="user.usr_pho" name="usr_pho" type="text" required>
+      </div>
+      <button type="submit">Register</button>
+      <div *ngIf="error_message" class="error-message">{{ error_message }}</div>
+    </form>
+  </div>
+</div>

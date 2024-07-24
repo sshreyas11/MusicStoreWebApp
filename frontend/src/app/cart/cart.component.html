@@ -1,0 +1,20 @@
+<div class="main-component">
+    <h2>Your cart</h2>
+</div>
+
+<div class="cart-page">
+    
+    <div *ngFor="let album of cart">
+      <div class="cart-album">
+        <img [src]="'/assets/images/' + album.cover_art" alt="{{album.album_name}}" class="cart-album-cover">
+        <div class="cart-album-details">
+          <h3>{{album.album_name}}</h3>
+          <p>{{album.album_artist}}</p>
+          <p>{{album.album_genre}}</p>
+          <p>{{album.album_release_date}}</p>
+          <p>{{album.album_price}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  

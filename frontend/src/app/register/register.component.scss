@@ -1,0 +1,83 @@
+body, html {
+  font-family: "Arial", sans-serif;
+  background-color: #f9f9f9;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.register-text {
+  position: absolute;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+  left: 20%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+
+.register-container {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 40%;
+  height: fit-content;
+  position: absolute;
+  top: 50%;
+  left: 70%;
+  transform: translate(-50%, -50%)
+}
+
+.register-container h2 {
+  text-align: center;
+  color: #333;
+}
+
+.register-container div {
+  margin-bottom: 0.5em;
+}
+
+.register-container label {
+  display: block;
+  margin-bottom: 2px;
+  color: #666;
+}
+
+.register-container input, .register-container select {
+  width: 100%;
+  padding: 7px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.register-container button {
+  width: 100%;
+  padding: 7px;
+  background-color: #5cb85c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.register-container button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+}

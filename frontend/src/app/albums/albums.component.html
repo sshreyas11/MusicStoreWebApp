@@ -1,0 +1,30 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<div class="main-component">
+  <h2>Albums</h2>
+
+</div>
+
+<div class="album-grid">
+  <div class="album-card" *ngFor="let album of albumCollection">
+    <img [src]="'/assets/images/'+album.cover_art" alt="{{album.album_name}}" class="album-cover">
+      <div class="album-details">
+        <h3>{{album.album_name}}</h3>
+        <p>{{album.album_artist}}</p>
+        <p>{{album.album_genre}}</p>
+        <p>{{album.album_release_date}}</p>
+        <p>{{album.album_price}}</p> 
+        <i class="material-icons" [routerLink]="['/cart']">shopping_cart</i>
+        <span class="cart-count" *ngIf="cart_count!=0">{{cart_count}}</span>
+        <button class="add-to-cart-btn"  (click)="addToCart(album)">+</button>
+
+      </div>
+  </div>
+</div>
+
+<div class="button-container">
+  <button class="btn-primary add" [routerLink]="['/add-album']"> Add new album </button>
+  <button class="btn-primary cart" [routerLink]="['/cart']"> Cart </button>
+  <button class="btn-primary logout" [routerLink]="['/']"> Logout </button>
+</div>
+
+

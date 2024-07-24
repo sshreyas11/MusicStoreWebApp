@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using MusicStoreWebApp.Models;
 using System;
@@ -93,5 +93,49 @@ namespace MusicStoreWebApp.Controllers
 
             return Ok(albums);
         }
-    }
+        // POST: api/AlbumApi
+        [HttpPost]
+        public async Task<ActionResult> AddAlbum([FromBody] AlvumPostVM album)
+        {
+            using (var conn = GetOpenConnection())
+            {
+                string query = "INSERT INTO Albums (album_name, album_price, album_release_date, album_artist, album_genre) " +
+                               "VALUES (@album_name, @album_price, @album_release_date, @album_artist, @album_genre)";
+
+                var cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@album_name", album.album_name);
+                cmd.Parameters.AddWithValue("@album_price", album.album_price);
+                cmd.Parameters.AddWithValue("@album_artist", album.album_artist);
+                cmd.Parameters.AddWithValue("@album_genre", album.album_genre);
+
+                // Handle the date parameter explicitly
+                if (!string.IsNullOrEmpty(album.album_release_date))
+                {
+                    DateTime releaseDate;
+                    if (DateTime.TryParseExact(album.album_release_date, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out releaseDate))
+                    {
+                        cmd.Parameters.Add(new SqlParameter("@album_release_date", System.Data.SqlDbType.Date) { Value = releaseDate });
+                    }
+                    else
+                    {
+                        return BadRequest("Invalid date format for album_release_date. Please use yyyy-MM-dd format.");
+                    }
+                }
+                else
+                {
+                    cmd.Parameters.Add(new SqlParameter("@album_release_date", System.Data.SqlDbType.Date) { Value = DBNull.Value });
+                }
+
+                int rowsAffected = await cmd.ExecuteNonQueryAsync();
+                if (rowsAffected > 0)
+                {
+                    return Ok(new { message = "Album added successfully." });
+                }
+                else
+                {
+                    return StatusCode(500, "A problem happened while handling your request.");
+                }
+            }
+        }
 }
+    }

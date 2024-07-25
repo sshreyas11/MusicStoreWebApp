@@ -8,15 +8,16 @@ import { UsersComponent } from './users/users.component';
 import { SongsComponent } from './songs/songs.component';
 import { StoresComponent } from './stores/stores.component';
 import { CartComponent } from './cart/cart.component';
-import { RouterModule } from '@angular/router';
-import {HttpClientModule} from '@angular/common/http';
 import { AddAlbumComponent } from './albums/add-album/add-album.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
-
+import { NavbarComponent } from './navbar/navbar.component';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
+    WelcomeComponent,
     AppComponent,
     AlbumsComponent,
     UsersComponent,
@@ -25,14 +26,14 @@ import { LoginComponent } from './login/login.component';
     CartComponent,
     AddAlbumComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule,
     HttpClientModule
   ],
   providers: [],

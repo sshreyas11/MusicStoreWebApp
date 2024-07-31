@@ -16,6 +16,8 @@ namespace APIs.Controllers {
 
         [HttpPost("Register")]
         public async Task<IActionResult> registerUser([FromBody] UserModel user) {
+
+
             var phone = user.usr_pho;
             if (!phone.StartsWith("+1")) {
                 phone = "+1" + phone;
@@ -31,8 +33,6 @@ namespace APIs.Controllers {
                 cmd.Parameters.AddWithValue("@email", user.email);
                 cmd.Parameters.AddWithValue("@password_hash", user.password_hash);
                 cmd.Parameters.AddWithValue("@usr_pho", user.usr_pho);
-
-                await cmd.ExecuteNonQueryAsync();
 
                 int rowsAffected = await cmd.ExecuteNonQueryAsync();
                 if (rowsAffected > 0) {

@@ -7,11 +7,13 @@ import { User } from 'src/app/models/user.model';
 })
 export class UserService {
 
-  private apiUrl = 'http://localhost:5000/api/users';
+  private register_user_endpoint = 'http://localhost:5283/api/User/Register';
+  
 
   constructor(private http: HttpClient) { }
 
   register(user: User): Observable<any> {
-    return this.http.post(`${this.apiUrl}/register`, user);
+    console.log(user);
+    return this.http.post(this.register_user_endpoint, user);
   }
 }

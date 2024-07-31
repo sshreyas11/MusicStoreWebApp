@@ -113,5 +113,31 @@ namespace APIs.Controllers {
             }
             return employees;
         }
+
+        [HttpPost("Login")]
+public async Task<IActionResult> Login([FromBody] LoginViewModel model)
+{
+    if (!ModelState.IsValid)
+    {
+        return BadRequest(ModelState);
+    }
+
+    using (var conn = GetOpenConnection())
+    {
+        var query = "SELECT * FROM Customers WHERE cust_username = @cust_username AND cust_password = @cust_password";
+        var cmd = new SqlCommand(query, conn);
+        cmd.Parameters.AddWithValue("@cust_username", model.cust_username);
+        cmd.Parameters.AddWithValue("@cust_password", model.cust_password); // Ensure passwords are hashed and compared securely
+        var reader = await cmd.ExecuteReaderAsync();
+        
+        if (reader.Read())
+        {
+            // You can add more data to return as needed
+            return Ok(new { message = "Login successful" });
+        }
+    }
+    return Unauthorized(new { message = "Invalid username or password" });
+}
+
     }
 }

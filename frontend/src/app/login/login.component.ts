@@ -11,33 +11,24 @@ import { Router } from '@angular/router';
 })
 
 export class LoginComponent {
+  email: string = '';
+  password: string = '';
   error_message: string = '';
-  login: Login = new Login();
 
   constructor(public login_service:LoginService, private router: Router){}
-
-  onSubmit():void{
-    this.login_service.login(
-      this.login.email,
-      this.login.password
-    ).subscribe(
-      success=>{
-        if(success){
-          console.log("Login Successful");
+  onSubmit(){
+    this.login_service.login(this.email, this.password).subscribe(
+      respons =>{
+        if(respons){
           this.router.navigate(['/albums']);
         }else{
           this.error_message = 'Invalid Login';
         }
+
+      },
+      error =>{
+        this.error_message ='An error has occurred';
       }
     );
-  }
-}
-
-class Login{
-  email: string;
-  password:string;
-  constructor(){
-    this.email = '';
-    this.password = '';
   }
 }

@@ -16,6 +16,8 @@ namespace APIs.Controllers {
 
         [HttpPost("Register")]
         public async Task<IActionResult> registerUser([FromBody] UserModel user) {
+
+
             var phone = user.usr_pho;
             if (!phone.StartsWith("+1")) {
                 phone = "+1" + phone;
@@ -31,8 +33,6 @@ namespace APIs.Controllers {
                 cmd.Parameters.AddWithValue("@email", user.email);
                 cmd.Parameters.AddWithValue("@password_hash", user.password_hash);
                 cmd.Parameters.AddWithValue("@usr_pho", user.usr_pho);
-
-                await cmd.ExecuteNonQueryAsync();
 
                 int rowsAffected = await cmd.ExecuteNonQueryAsync();
                 if (rowsAffected > 0) {
@@ -112,6 +112,26 @@ namespace APIs.Controllers {
                 }
             }
             return employees;
+        }
+
+        [HttpPost("Login")]
+        public async Task<IActionResult> Login([FromBody] LoginViewModel model){
+            if (!ModelState.IsValid){
+                return BadRequest(ModelState);
+            }
+            using (var conn = GetOpenConnection()){
+                var query = "SELECT first_name FROM Users WHERE email = @cust_email AND password_hash = @cust_password";
+                var cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@cust_email", model.cust_email);
+                cmd.Parameters.AddWithValue("@cust_password", model.cust_password); // Ensure passwords are hashed and compared securely
+                var reader = await cmd.ExecuteReaderAsync();
+        
+                if (reader.Read()){
+                    var firstName = reader["first_name"].ToString();
+                    return Ok(new { message = "Login successful", first_name = firstName });
+                }
+            }
+            return Unauthorized(new { message = "Invalid email or password" });
         }
     }
 }

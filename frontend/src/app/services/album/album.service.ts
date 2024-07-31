@@ -11,7 +11,7 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root',
 })
 export class AlbumService {
-  private getalbums_endpoint = 'http://localhost:8888/api/getAlbums';
+  private getalbums_endpoint = 'http://localhost:5283/api/Album/all';
   private addalbums_endpoint = 'http://localhost:8888/api/postAlbum';
   headers = {
     headers: new HttpHeaders({

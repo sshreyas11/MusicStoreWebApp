@@ -39,7 +39,7 @@ namespace APIs.Controllers {
             return model;
         }
 
-        [HttpGet]
+        [HttpGet("all")]
         public IEnumerable<AlbumModel> getAlbums() {
             List<AlbumModel> albums = new List<AlbumModel>();
             using (var conn = GetOpenConnection()) {

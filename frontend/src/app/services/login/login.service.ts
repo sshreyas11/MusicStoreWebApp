@@ -7,12 +7,10 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LoginService {
 
-  private apiURL = '';
-  constructor(private http: HttpClient) {
-
-   }
+  private apiURL = 'http://localhost:5283/api/User/Login';
+  constructor(private http: HttpClient) {}
 
    login(username:string, password:string): Observable<any>{
-    return this.http.post<any>('${this.apiURL}/login', {cust_email:username, cust_password:password});
+    return this.http.post<any>(this.apiURL, {cust_email:username, cust_password:password});
    }
 }

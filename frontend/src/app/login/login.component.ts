@@ -11,14 +11,13 @@ import { Router } from '@angular/router';
 })
 
 export class LoginComponent {
-  username: string = '';
+  email: string = '';
   password: string = '';
   error_message: string = '';
-//  login: Login = new Login();
 
   constructor(public login_service:LoginService, private router: Router){}
-  login(){
-    this.login_service.login(this.username, this.password).subscribe(
+  onSubmit(){
+    this.login_service.login(this.email, this.password).subscribe(
       respons =>{
         if(respons){
           this.router.navigate(['/albums']);
@@ -33,18 +32,3 @@ export class LoginComponent {
     );
   }
 }
-  // onSubmit():void{
-  //   this.login_service.login(
-  //     this.login.email,
-  //     this.login.password
-  //   ).subscribe(
-  //     success=>{
-  //       if(success){
-  //         console.log("Login Successful");
-  //         this.router.navigate(['/albums']);
-  //       }else{
-  //         this.error_message = 'Invalid Login';
-  //       }
-  //     }
-  //   );
-  // }

@@ -115,29 +115,23 @@ namespace APIs.Controllers {
         }
 
         [HttpPost("Login")]
-public async Task<IActionResult> Login([FromBody] LoginViewModel model)
-{
-    if (!ModelState.IsValid)
-    {
-        return BadRequest(ModelState);
-    }
-
-    using (var conn = GetOpenConnection())
-    {
-        var query = "SELECT * FROM Customers WHERE cust_username = @cust_username AND cust_password = @cust_password";
-        var cmd = new SqlCommand(query, conn);
-        cmd.Parameters.AddWithValue("@cust_username", model.cust_username);
-        cmd.Parameters.AddWithValue("@cust_password", model.cust_password); // Ensure passwords are hashed and compared securely
-        var reader = await cmd.ExecuteReaderAsync();
+        public async Task<IActionResult> Login([FromBody] LoginViewModel model){
+            if (!ModelState.IsValid){
+                return BadRequest(ModelState);
+            }
+            using (var conn = GetOpenConnection()){
+                var query = "SELECT first_name FROM Users WHERE email = @cust_email AND password_hash = @cust_password";
+                var cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@cust_email", model.cust_email);
+                cmd.Parameters.AddWithValue("@cust_password", model.cust_password); // Ensure passwords are hashed and compared securely
+                var reader = await cmd.ExecuteReaderAsync();
         
-        if (reader.Read())
-        {
-            // You can add more data to return as needed
-            return Ok(new { message = "Login successful" });
+                if (reader.Read()){
+                    var firstName = reader["first_name"].ToString();
+                    return Ok(new { message = "Login successful", first_name = firstName });
+                }
+            }
+            return Unauthorized(new { message = "Invalid email or password" });
         }
-    }
-    return Unauthorized(new { message = "Invalid username or password" });
-}
-
     }
 }

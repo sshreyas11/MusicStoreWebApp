@@ -23,11 +23,11 @@ namespace APIs.Controllers {
                 phone = "+1" + phone;
             }
             using (var conn = GetOpenConnection()) {
-                var query = "INSERT INTO Users (user_type, first_name, last_name, email, password_hash, usr_pho)" +
-                    "VALUES (@user_type, @first_name, @last_name, @email, @password_hash, @usr_pho)";
+                var query = "INSERT INTO Users (first_name, last_name, email, password_hash, usr_pho)" +
+                    "VALUES (@first_name, @last_name, @email, @password_hash, @usr_pho)";
 
                 var cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@user_type", user.user_type);
+                
                 cmd.Parameters.AddWithValue("@first_name", user.first_name);
                 cmd.Parameters.AddWithValue("@last_name", user.last_name);
                 cmd.Parameters.AddWithValue("@email", user.email);

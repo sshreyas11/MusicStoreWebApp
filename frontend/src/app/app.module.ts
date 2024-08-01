@@ -13,6 +13,10 @@ import {HttpClientModule} from '@angular/common/http';
 import { AddAlbumComponent } from './albums/add-album/add-album.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { DialogueComponent } from './dialogue/dialogue.component';
 
 
 @NgModule({
@@ -25,7 +29,9 @@ import { LoginComponent } from './login/login.component';
     CartComponent,
     AddAlbumComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    DialogueComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -33,7 +39,10 @@ import { LoginComponent } from './login/login.component';
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    MatProgressSpinnerModule,
+    MatButtonModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

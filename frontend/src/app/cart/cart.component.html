@@ -1,20 +1,25 @@
 <div class="main-component">
-    <h2>Your cart</h2>
+  <h2>Your Cart</h2>
 </div>
 
 <div class="cart-page">
-    
-    <div *ngFor="let album of cart">
-      <div class="cart-album">
-        <img [src]="'/assets/images/' + album.cover_art" alt="{{album.album_name}}" class="cart-album-cover">
-        <div class="cart-album-details">
-          <h3>{{album.album_name}}</h3>
-          <p>{{album.album_artist}}</p>
-          <p>{{album.album_genre}}</p>
-          <p>{{album.album_release_date}}</p>
-          <p>{{album.album_price}}</p>
-        </div>
+  <div class="cart-items">
+    <div *ngFor="let item of cart" class="cart-album">
+      <img [src]="'/assets/images/' + item.album.cover_art" alt="{{item.album.album_name}}" class="cart-album-cover">
+      <div class="cart-album-details">
+        <h3>{{item.album.album_name}}</h3>
+        <p>{{item.album.album_artist}}</p>
+        <p>{{item.album.album_genre}}</p>
+        <p>{{item.album.album_release_date}}</p>
+        <p class="album-price">{{item.album.album_price | currency}} x {{item.quantity}}</p>
+        <p>Total: {{item.album.album_price * item.quantity | currency}}</p>
       </div>
     </div>
   </div>
-  
+
+  <div class="cart-summary">
+    <button class="back-button" (click)="goToAlbums()">Back to Albums</button>
+    <p>Total items: {{totalItems}}</p>
+    <p>Total amount: {{totalAmount | currency}}</p>
+  </div>
+</div>

@@ -9,6 +9,7 @@ import { AddAlbumComponent } from './albums/add-album/add-album.component';
 import { CartComponent } from './cart/cart.component';
 import { RegisterComponent } from './register/register.component';
 
+
 const routes: Routes = [
   {path:'', redirectTo:'/login', pathMatch:'full'},
   {path:'albums', component: AlbumsComponent},

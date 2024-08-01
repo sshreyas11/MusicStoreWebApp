@@ -15,7 +15,6 @@ export class RegisterComponent {
   error_message: string = '';
  
   constructor(private userService:UserService, private router:Router, public loginService:LoginService){}
- 
 
   onSubmit(){
     console.log(this.user);

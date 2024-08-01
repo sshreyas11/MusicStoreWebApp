@@ -1,20 +1,24 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <div class="main-component">
   <h2>Albums</h2>
-
 </div>
 
-<div class="album-grid">
+
+
+<div *ngIf="showNotification" class="notification">
+  <i class="material-icons">check_circle</i> Album added to cart!
+</div>
+
+<div class="album-grid" *ngIf="!loading">
   <div class="album-card" *ngFor="let album of albumCollection">
     <img [src]="'/assets/images/'+album.cover_art" alt="{{album.album_name}}" class="album-cover">
       <div class="album-details">
         <h3>{{album.album_name}}</h3>
-        <p>{{album.album_artist}}</p>
-        <p>{{album.album_genre}}</p>
+        <p>{{album.album_artist}} - {{album.album_genre}}</p>
+        <p></p>
         <p>{{album.album_release_date}}</p>
-        <p>{{album.album_price}}</p> 
+        <p>${{album.album_price}}</p> 
         <i class="material-icons" [routerLink]="['/cart']">shopping_cart</i>
-        <span class="cart-count" *ngIf="cart_count!=0">{{cart_count}}</span>
         <button class="add-to-cart-btn"  (click)="addToCart(album)">+</button>
 
       </div>
@@ -24,7 +28,7 @@
 <div class="button-container">
   <button class="btn-primary add" [routerLink]="['/add-album']"> Add new album </button>
   <button class="btn-primary cart" [routerLink]="['/cart']"> Cart </button>
-  <button class="btn-primary logout" [routerLink]="['/']"> Logout </button>
+  <button class="btn-primary logout" onclick="this.loginService.logout()" [routerLink]="['/']"> Logout </button>
 </div>
 
 

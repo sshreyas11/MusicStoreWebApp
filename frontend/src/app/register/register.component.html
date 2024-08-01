@@ -5,12 +5,7 @@
   <div class="register-text" *ngIf="!this.loginService.isLoggedIn()">Register</div>
   <div class="register-container" *ngIf="!this.loginService.isLoggedIn()">
     <form (ngSubmit)="onSubmit()">
-      <div>
-        <label for="user_type">User Type</label>
-        <select id="user_type" [(ngModel)]="user.user_type" name="user-type" required>
-          <option *ngFor="let type of user_types" [value]="type">{{ type }}</option>
-        </select>
-      </div>
+      
       <div>
         <label for="first_name">First Name</label>
         <input id="first_name" [(ngModel)]="user.first_name" name="first_name" type="text" required>

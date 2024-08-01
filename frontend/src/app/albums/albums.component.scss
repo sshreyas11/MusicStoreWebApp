@@ -29,13 +29,11 @@
     gap:3px;
     margin:3px;
     justify-content: center;
-    margin-left: 4.5%;
-    
+    margin-left: 4.5%;   
 }
 
 .material-icons{
     position: relative;
-    
     cursor: pointer;
 }
 
@@ -55,10 +53,11 @@
     overflow: hidden;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s;
-    height: 400px;
+    height: 410px;
     width: 250px;
     margin-bottom: 20px;
     position: relative;
+    box-sizing: border-box;
 }
 
 .album-card:hover{
@@ -88,7 +87,8 @@
 
 .button-container{
     text-align: center;
-    margin-top: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .btn-primary{

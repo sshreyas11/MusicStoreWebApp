@@ -1,50 +1,100 @@
-.body {
-  font-family: "Arial", sans-serif;
-  background-color: #f9f9f9;
+.main-component {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.cart-page {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.cart-items {
+  width: 60%;
+}
+
+.cart-album {
+  display: flex;
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.cart-album-cover {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.cart-album-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cart-album-details h3 {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+.cart-album-details p {
+  margin: 0;
+}
+
+.album-price {
+  font-weight: bold;
+}
+
+.cart-summary {
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 5px;
+  background: #f9f9f9;
+}
+
+.back-button {
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
+}
+
+
+.loading-indicator {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  margin: 0;
-}
-.main-component {
-  text-align: center;
-  padding: 20px;
 }
 
-.main-component h2 {
-  margin: 0;
-  font-size: 2em;
-  color: #333;
-  font-family: "Arial", sans-serif;
-  text-align: center;
-  background-color: #ffffff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #4caf50;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
-.cart-page {
-    padding: 20px;
-  }
-  
-  .cart-album {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    padding: 10px;
-    width: 250px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-  }
-  
-  .cart-album-cover {
-    width: 100px;
-    height: 100px;
-    margin-right: 10px;
-  }
-  
-  .cart-album-details {
-    flex: 1;
-  }
-  
+
+.notification .material-icons {
+  margin-right: 5px;
+}

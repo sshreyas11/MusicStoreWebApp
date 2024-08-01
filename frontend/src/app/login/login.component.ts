@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 
 export class LoginComponent {
+  loading: boolean = false;
   email: string = '';
   password: string = '';
   error_message: string = '';
@@ -18,15 +19,19 @@ export class LoginComponent {
   constructor(public login_service:LoginService, private router: Router){}
   onSubmit(){
     this.login_service.login(this.email, this.password).subscribe(
-      respons =>{
-        if(respons){
+      response =>{
+        if(response){
+          this.loading = false;
           this.router.navigate(['/albums']);
         }else{
+          this.loading = false;
           this.error_message = 'Invalid Login';
         }
 
       },
       error =>{
+        this.loading = false;
+
         this.error_message ='An error has occurred';
       }
     );

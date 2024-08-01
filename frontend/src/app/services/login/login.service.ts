@@ -3,6 +3,7 @@ import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 
+
 export const AUTH_TOKEN_KEY = 'auth-token';
 export const usr_data = 'usr-name';
 
@@ -13,7 +14,9 @@ export class LoginService {
   public authToken: string | null = null;
   public usr_name: string | null = null;
   private apiURL = 'http://localhost:5283/api/User/Login';
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.checkStorage;
+  }
 
   checkStorage() {
     const authToken = sessionStorage.getItem(AUTH_TOKEN_KEY);
@@ -49,5 +52,6 @@ export class LoginService {
     if(!this.isLoggedIn()) return;
     sessionStorage.clear();
     this.checkStorage();
+
   }
 }

@@ -10,13 +10,14 @@ import { StoresComponent } from './stores/stores.component';
 import { CartComponent } from './cart/cart.component';
 import { RouterModule } from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
-import { AddAlbumComponent } from './albums/add-album/add-album.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { DialogueComponent } from './dialogue/dialogue.component';
+import { EmployeeDashboardComponent } from './employee-dashboard/employee-dashboard.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
@@ -27,10 +28,11 @@ import { DialogueComponent } from './dialogue/dialogue.component';
     SongsComponent,
     StoresComponent,
     CartComponent,
-    AddAlbumComponent,
     RegisterComponent,
     LoginComponent,
     DialogueComponent,
+    EmployeeDashboardComponent,
+    NavbarComponent,
     
   ],
   imports: [

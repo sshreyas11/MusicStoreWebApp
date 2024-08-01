@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CartService } from '../services/cart/cart.service';
 import { Album } from '../models/album.model';
 import { Router } from '@angular/router';
+import { NavbarService } from '../services/navbar/navbar.service';
 
 @Component({
   selector: 'app-cart',
@@ -13,7 +14,7 @@ export class CartComponent {
   totalItems: number = 0;
   totalAmount: number = 0;
 
-  constructor(private cartService: CartService, private router: Router){}
+  constructor(private cartService: CartService, private router: Router, private navbarService: NavbarService){}
 
   ngOnInit() {
     this.cart = this.cartService.getCart();

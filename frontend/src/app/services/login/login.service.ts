@@ -36,10 +36,11 @@ export class LoginService {
       .post<any>(this.apiURL, { cust_email: email, cust_password: password })
       .pipe(
         tap((response) => {
-          const firstName = response.firstName;
-          if (firstName) {
-            sessionStorage.setItem(usr_data, firstName);
+          const userObj = response;
+          if (userObj) {
+            sessionStorage.setItem(usr_data, JSON.stringify(userObj));
           }
+          console.log(sessionStorage[usr_data]);
         })
       );
   }

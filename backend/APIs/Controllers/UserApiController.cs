@@ -1,4 +1,5 @@
 ﻿using APIs.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Data.SqlClient;
 namespace APIs.Controllers {
@@ -17,17 +18,16 @@ namespace APIs.Controllers {
         [HttpPost("Register")]
         public async Task<IActionResult> registerUser([FromBody] UserModel user) {
 
-
             var phone = user.usr_pho;
             if (!phone.StartsWith("+1")) {
                 phone = "+1" + phone;
             }
             using (var conn = GetOpenConnection()) {
-                var query = "INSERT INTO Users (first_name, last_name, email, password_hash, usr_pho)" +
-                    "VALUES (@first_name, @last_name, @email, @password_hash, @usr_pho)";
+                var query = "INSERT INTO Users (user_type, first_name, last_name, email, password_hash, usr_pho)" +
+                    "VALUES (@user_type, @first_name, @last_name, @email, @password_hash, @usr_pho)";
 
                 var cmd = new SqlCommand(query, conn);
-                
+                cmd.Parameters.AddWithValue("@user_type", "C");
                 cmd.Parameters.AddWithValue("@first_name", user.first_name);
                 cmd.Parameters.AddWithValue("@last_name", user.last_name);
                 cmd.Parameters.AddWithValue("@email", user.email);
@@ -120,7 +120,7 @@ namespace APIs.Controllers {
                 return BadRequest(ModelState);
             }
             using (var conn = GetOpenConnection()){
-                var query = "SELECT first_name FROM Users WHERE email = @cust_email AND password_hash = @cust_password";
+                var query = "SELECT first_name, email, user_type FROM Users WHERE email = @cust_email AND password_hash = @cust_password";
                 var cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@cust_email", model.cust_email);
                 cmd.Parameters.AddWithValue("@cust_password", model.cust_password); // Ensure passwords are hashed and compared securely
@@ -128,7 +128,10 @@ namespace APIs.Controllers {
         
                 if (reader.Read()){
                     var firstName = reader["first_name"].ToString();
-                    return Ok(new { message = "Login successful", first_name = firstName });
+                    var userType = reader["user_type"];
+                    var email = reader["email"].ToString();
+                    
+                    return Ok(new { message = "Login successful", first_name = firstName, email = email, userType=userType});
                 }
             }
             return Unauthorized(new { message = "Invalid email or password" });

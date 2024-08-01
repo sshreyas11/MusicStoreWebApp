@@ -5,6 +5,8 @@ import { CartService } from '../services/cart/cart.service';
 import { LoginService } from '../services/login/login.service';
 import { DialogueComponent } from '../dialogue/dialogue.component';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { NavbarService } from '../services/navbar/navbar.service';
 
 @Component({
   selector: 'app-albums',
@@ -20,7 +22,10 @@ export class AlbumsComponent {
     private album_service: AlbumService, 
     private cartService: CartService, 
     public loginService:LoginService, 
-    public dialog: MatDialog){}
+    public router: Router,
+    public dialog: MatDialog,
+    private navbarService: NavbarService,
+  ){}
 
   ngOnInit():void{
     this.album_service.getAlbums().subscribe((album_data: Album[])=>{
@@ -43,6 +48,4 @@ export class AlbumsComponent {
       data: { album }
     });
   }
-
-  
 }

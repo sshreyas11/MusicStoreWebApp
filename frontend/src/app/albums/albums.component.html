@@ -3,8 +3,6 @@
   <h2>Albums</h2>
 </div>
 
-
-
 <div *ngIf="showNotification" class="notification">
   <i class="material-icons">check_circle</i> Album added to cart!
 </div>
@@ -25,10 +23,6 @@
   </div>
 </div>
 
-<div class="button-container">
-  <button class="btn-primary add" [routerLink]="['/add-album']"> Add new album </button>
-  <button class="btn-primary cart" [routerLink]="['/cart']"> Cart </button>
-  <button class="btn-primary logout" onclick="this.loginService.logout()" [routerLink]="['/']"> Logout </button>
-</div>
+
 
 

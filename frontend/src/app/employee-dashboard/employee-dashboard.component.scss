@@ -1,0 +1,72 @@
+.employee-dashboard {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.album-list {
+  width: 45%;
+}
+
+.album-list h3 {
+  margin-bottom: 10px;
+}
+
+.album-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.album-list li {
+  background: #f9f9f9;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.add-album-form {
+  width: 45%;
+}
+
+.add-album-form h3 {
+  margin-bottom: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+label {
+  width: 25%;
+  margin-right: 10px;
+}
+
+input {
+  width: 65%;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+button {
+  align-self: flex-end;
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #218838;
+}

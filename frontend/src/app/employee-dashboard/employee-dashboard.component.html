@@ -1,0 +1,37 @@
+<div class="employee-dashboard">
+  <div class="album-list">
+    <h3>Album List</h3>
+    <ul>
+      <li *ngFor="let album of albumCollection">
+        <strong>{{ album.album_name }}</strong> by {{ album.album_artist }}
+      </li>
+    </ul>
+  </div>
+  <div class="add-album-form">
+    <h3>Add New Album</h3>
+    <form (ngSubmit)="addAlbum()">
+      <div class="form-group">
+        <label for="album_name">Album Name:</label>
+        <input id="album_name" [(ngModel)]="newAlbum.album_name" name="album_name" required>
+      </div>
+      <div class="form-group">
+        <label for="album_artist">Artist:</label>
+        <input id="album_artist" [(ngModel)]="newAlbum.album_artist" name="album_artist" required>
+      </div>
+      <div class="form-group">
+        <label for="album_genre">Genre:</label>
+        <input id="album_genre" [(ngModel)]="newAlbum.album_genre" name="album_genre" required>
+      </div>
+      <div class="form-group">
+        <label for="album_release_date">Release Date:</label>
+        <input id="album_release_date" type="date" [(ngModel)]="newAlbum.album_release_date" name="album_release_date" required>
+      </div>
+      <div class="form-group">
+        <label for="album_price">Price:</label>
+        <input id="album_price" type="number" [(ngModel)]="newAlbum.album_price" name="album_price" required>
+      </div>
+      
+      <button type="submit">Add Album</button>
+    </form>
+  </div>
+</div>

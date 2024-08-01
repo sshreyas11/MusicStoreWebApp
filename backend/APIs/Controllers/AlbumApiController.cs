@@ -62,8 +62,8 @@ namespace APIs.Controllers {
             return albums;
         }
 
-        [HttpPost]
-        public async Task<ActionResult> postAlbum([FromBody] AlbumPostModel model) {
+        [HttpPost("addAlbum")]
+        public async Task<ActionResult> postAlbum([FromBody] AlbumModel model) {
             using (var conn = GetOpenConnection()) {
                 string query = "INSERT INTO Albums (album_name, album_price, album_release_date, album_artist, album_genre, cover_art)" +
                                 "VALUES (@album_name, @album_price, @album_release_date, @album_artist, @album_genre, @cover_art);";
@@ -74,17 +74,7 @@ namespace APIs.Controllers {
                 cmd.Parameters.AddWithValue("@album_artist", model.album_artist);
                 cmd.Parameters.AddWithValue("@album_genre", model.album_genre);
                 cmd.Parameters.AddWithValue("@cover_art", model.cover_art);
-                if (!string.IsNullOrEmpty(model.album_release_date)) {
-                    DateTime release;
-                    if (DateTime.TryParseExact(model.album_release_date, "yyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out release)) {
-                        cmd.Parameters.Add(new SqlParameter("@album_release_date", System.Data.SqlDbType.Date) {
-                            Value = release
-                        });
-                    }
-                } else {
-                    cmd.Parameters.Add(new SqlParameter("@album_release_date", System.Data.SqlDbType.Date) { Value = DBNull.Value});
-                }
-
+                cmd.Parameters.AddWithValue("@album_release_date", model.album_release_date);
                 int rowsAffected = await cmd.ExecuteNonQueryAsync();
                 if (rowsAffected > 0) {
                     return Ok(new { message = "Album added successfully" });

@@ -1,6 +1,9 @@
 <div class="page-container">
-  <div class="register-text">Register</div>
-  <div class="register-container">
+  <span *ngIf="this.loginService.isLoggedIn()">
+    <h3> You are logged in as {{ this.get_user()}}</h3>
+  </span>
+  <div class="register-text" *ngIf="!this.loginService.isLoggedIn()">Register</div>
+  <div class="register-container" *ngIf="!this.loginService.isLoggedIn()">
     <form (ngSubmit)="onSubmit()">
       <div>
         <label for="user_type">User Type</label>
